@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {StyleSheet, TextInputProps, View, Text, TextInput} from 'react-native';
-
+import {TextInputProps, View, Text, TextInput} from 'react-native';
+import styles from './styles'
 import {
   maskCartaoCredito,
   maskCvv,
@@ -56,18 +56,9 @@ const Input: React.FC<InputProps> = ({mask, inputMaskChange, label, value, ...re
 
   return (
     <View style={styles.input}>
-                <View style={{ paddingTop: 18 }}>
+        <View style={{ paddingTop: 18 }}>
         <TextInput
-          style={{ 
-            height: 40,
-             fontSize: 16, 
-             color: '#707070', 
-             borderWidth: 1, 
-             borderColor: '#CCCCCC',
-             borderRadius:8,
-             paddingHorizontal:15,
-             paddingVertical:11,
-            }}
+          style={styles.textInput}
           multiline={false}
           onChangeText={(text: any) => handleChange(text)}
           onFocus={handleFocus}
@@ -76,17 +67,11 @@ const Input: React.FC<InputProps> = ({mask, inputMaskChange, label, value, ...re
         {...rest}
         />
         
-        <Text style={{
-    marginLeft:10,
-    paddingHorizontal:3,
-    backgroundColor:'white',
-    position: 'absolute',
-    left: 0,
-    top: !isFocused ? 26 : 11,
-    fontSize: !isFocused ? 16 : 8,
-    fontFamily:'HelveticaNeue Regular',
-    color:'#707070',
-        }}>
+        <Text style={[
+          styles.textLabel,{
+          top: !isFocused ? 26 : 11,
+          fontSize: !isFocused ? 16 : 8,
+        }]}>
           {label}
         </Text>
       </View>
@@ -95,9 +80,3 @@ const Input: React.FC<InputProps> = ({mask, inputMaskChange, label, value, ...re
 };
 
 export default Input;
-
-const styles = StyleSheet.create({
-  input: {
-    paddingVertical: 7,
-  },
-});
