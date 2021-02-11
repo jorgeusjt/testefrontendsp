@@ -20,8 +20,7 @@ const Input: React.FC<InputProps> = ({mask, inputMaskChange, label, value, ...re
   const [isFocused, setIsFocused] = useState(false);
 
   function handleChange(text: string) {
-   
-  
+
     if (mask === 'cartaoCredito') {
       const value = maskCartaoCredito(text);
       inputMaskChange(value);
@@ -64,6 +63,7 @@ const Input: React.FC<InputProps> = ({mask, inputMaskChange, label, value, ...re
           onFocus={handleFocus}
           onBlur={handleBlur}
           blurOnSubmit
+          value={value}
         {...rest}
         />
         

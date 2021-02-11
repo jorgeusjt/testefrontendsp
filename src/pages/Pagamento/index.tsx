@@ -61,7 +61,7 @@ const Pagamento = () => {
           value={numero}
           mask="cartaoCredito"
           keyboardType='numeric'
-          inputMaskChange={(text: string) => {setNumero(text)}}
+          inputMaskChange={(text: string) => setNumero(text)}
         />
         <Input
           label="Nome"
