@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native'
 import {BaseButton} from 'react-native-gesture-handler';
-import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
 
 export interface Curso {

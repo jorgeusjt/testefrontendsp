@@ -80,7 +80,7 @@ const Pagamento = () => {
               inputMaskChange={(text: string) => setValidade(text)}
             />
           </View>
-          <View style={styles.input50}>
+          <View style={[styles.input50, {paddingLeft:8}]}>
             <Input
               label="CVV"
               value={cvv}
