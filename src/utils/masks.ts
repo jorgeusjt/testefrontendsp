@@ -1,4 +1,4 @@
-//Usando RegExp
+// Usando RegExp
 
 function maskCartaoCredito(value: string) {
   value = value.replace(/\D/g, ''); // Permite apenas dígitos
@@ -23,8 +23,11 @@ function maskValidade(value: string) {
 }
 
 function maskString(value: string) {
+  value = value.replace(/\W{30}/);
   value = value.substring(0, 30); // Limita o tamanho
   return value;
 }
 
-export {maskCartaoCredito, maskCvv, maskString, maskValidade};
+export {
+  maskCartaoCredito, maskCvv, maskString, maskValidade,
+};

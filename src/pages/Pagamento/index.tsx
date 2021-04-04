@@ -1,10 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import {FocusAwareStatusBar} from '../../routes/wrapper';
-import {Text, View, SafeAreaView, ScrollView} from 'react-native';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
+import {
+  Text, View, SafeAreaView, ScrollView,
+} from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { BaseButton } from 'react-native-gesture-handler';
+import { FocusAwareStatusBar } from '../../routes/wrapper';
 import Input from '../components/Input';
 import DrawingCartao from '../components/drawingCartao';
-import {BaseButton} from 'react-native-gesture-handler';
 import styles from './style';
 
 const Pagamento = () => {
@@ -30,15 +32,14 @@ const Pagamento = () => {
   }
 
   function discountCalculation() {
-    
-    let price = route.params.curso;
+    const price = route.params.curso;
     setPrice(price);
 
     let valor = price * discountPercent;
-    valor = valor / 100;
+    valor /= 100;
     setValueDiscount(valor);
 
-    let total = price - valor;
+    const total = price - valor;
     setTotal(total);
   }
 
@@ -49,7 +50,7 @@ const Pagamento = () => {
         backgroundColor="#FF8686"
         barStyle="light-content"
       />
-      <ScrollView style={{paddingHorizontal: 24}}>
+      <ScrollView style={{ paddingHorizontal: 24 }}>
         <DrawingCartao
           numero={numero}
           name={name}
@@ -60,47 +61,58 @@ const Pagamento = () => {
           label="Número do cartão de crédito"
           value={numero}
           mask="cartaoCredito"
-          keyboardType='numeric'
+          keyboardType="numeric"
           inputMaskChange={(text: string) => setNumero(text)}
         />
         <Input
           label="Nome"
           value={name}
-          keyboardType='default'
+          keyboardType="default"
           mask="string"
           inputMaskChange={(text: string) => setName(text)}
         />
         <View style={styles.inputContainer}>
           <View style={styles.input50}>
             <Input
-              label='Validade'
+              label="Validade"
               value={validade}
-              mask='validade'
-              keyboardType='numeric'
+              mask="validade"
+              keyboardType="numeric"
               inputMaskChange={(text: string) => setValidade(text)}
             />
           </View>
-          <View style={[styles.input50, {paddingLeft:8}]}>
+          <View style={[styles.input50, { paddingLeft: 8 }]}>
             <Input
               label="CVV"
               value={cvv}
               mask="cvv"
-              keyboardType='numeric'
+              keyboardType="numeric"
               inputMaskChange={(text: string) => setCvv(text)}
             />
           </View>
         </View>
         {/* Linha horizontal */}
         <View style={[styles.lineStyle]} />
-        <View style={{marginVertical: 16}}>
+        <View style={{ marginVertical: 16 }}>
           <View style={styles.discountRow}>
             <Text style={styles.textDiscount}>Curso</Text>
-            <Text style={styles.textDiscount}>R$ {price.toLocaleString('pt-BR')}</Text>
+            <Text style={styles.textDiscount}>
+              R$
+              {' '}
+              {price.toLocaleString('pt-BR')}
+            </Text>
           </View>
           <View style={styles.discountRow}>
-            <Text style={styles.textDiscount}>Desconto {discountPercent}%</Text>
-            <Text style={[styles.textDiscount, {color: '#FF8686'}]}>
-              - R$ {valueDiscount.toLocaleString('pt-BR')}
+            <Text style={styles.textDiscount}>
+              Desconto
+              {' '}
+              {discountPercent}
+              %
+            </Text>
+            <Text style={[styles.textDiscount, { color: '#FF8686' }]}>
+              - R$
+              {' '}
+              {valueDiscount.toLocaleString('pt-BR')}
             </Text>
           </View>
         </View>
@@ -108,11 +120,16 @@ const Pagamento = () => {
         <View style={[styles.lineStyle]} />
         <View style={styles.totalContainer}>
           <Text style={styles.textTotal}>Total:</Text>
-          <Text style={styles.textTotal}>R$ {total.toLocaleString('pt-BR')}</Text>
+          <Text style={styles.textTotal}>
+            R$
+            {' '}
+            {total.toLocaleString('pt-BR')}
+          </Text>
         </View>
         <BaseButton
           style={styles.button}
-          onPress={handleNavigateToPagamentoPage}>
+          onPress={handleNavigateToPagamentoPage}
+        >
           <Text style={styles.textButton}>
             Pagar
           </Text>
